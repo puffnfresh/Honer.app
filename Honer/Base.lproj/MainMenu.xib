@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="dhz-fy-eAv" id="e2p-fE-64H"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="Honer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="371" customClass="OverlayWindow">
+            <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <view key="contentView" wantsLayer="YES" id="372">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="9Ot-LU-6FT" customClass="BorderView">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9Ot-LU-6FT" firstAttribute="leading" secondItem="372" secondAttribute="leading" id="lGA-Md-xEe"/>
+                    <constraint firstItem="9Ot-LU-6FT" firstAttribute="centerY" secondItem="372" secondAttribute="centerY" id="u4L-T8-vtJ"/>
+                    <constraint firstItem="9Ot-LU-6FT" firstAttribute="centerX" secondItem="372" secondAttribute="centerX" id="wgA-YZ-Nih"/>
+                    <constraint firstItem="9Ot-LU-6FT" firstAttribute="top" secondItem="372" secondAttribute="top" id="zTJ-jz-1vX"/>
+                </constraints>
+            </view>
+        </window>
+        <customObject id="420" customClass="NSFontManager"/>
+        <customObject id="dhz-fy-eAv" customClass="HonerApplicationDelegate">
+            <connections>
+                <outlet property="preferenceWindow" destination="RTC-nf-H7K" id="72s-fg-c5V"/>
+                <outlet property="statusBarMenu" destination="d9o-xH-Kdz" id="XVS-Pn-fdr"/>
+                <outlet property="window" destination="371" id="dh9-5l-AHl"/>
+            </connections>
+        </customObject>
+        <menu id="d9o-xH-Kdz">
+            <items>
+                <menuItem title="Options" id="VW4-gW-D57">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="makeKeyAndOrderFront:" target="RTC-nf-H7K" id="lIr-5e-vRH"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="YrT-AT-dOG"/>
+                <menuItem title="Quit" id="FYw-6v-nRQ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="terminate:" target="-3" id="mzL-lR-l5W"/>
+                    </connections>
+                </menuItem>
+            </items>
+        </menu>
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="RTC-nf-H7K">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="163" y="199" width="276" height="110"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <view key="contentView" id="QWm-NQ-vYv">
+                <rect key="frame" x="0.0" y="0.0" width="276" height="110"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jfa-52-C6j">
+                        <rect key="frame" x="154" y="18" width="104" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" tickMarkPosition="above" sliderType="linear" id="JXI-kN-hbh"/>
+                        <connections>
+                            <action selector="updateWidth:" target="9Ot-LU-6FT" id="eTw-4Q-RqL"/>
+                            <binding destination="Vs3-aT-OLF" name="value" keyPath="values.size" id="tzb-lW-sWy"/>
+                        </connections>
+                    </slider>
+                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mvm-Ja-SQP">
+                        <rect key="frame" x="154" y="43" width="104" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" state="on" alignment="left" maxValue="9" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="wgu-YF-BGJ"/>
+                        <connections>
+                            <action selector="updateAlpha:" target="371" id="Mlo-HB-Mnx"/>
+                            <binding destination="Vs3-aT-OLF" name="value" keyPath="values.transparency" id="fGV-MA-uT7"/>
+                        </connections>
+                    </slider>
+                    <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWI-oa-QK3">
+                        <rect key="frame" x="156" y="70" width="44" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                        <connections>
+                            <action selector="updateColor:" target="9Ot-LU-6FT" id="5kH-q5-NOA"/>
+                            <binding destination="Vs3-aT-OLF" name="value" keyPath="values.color" id="bBe-d5-8to">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </colorWell>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZC-ae-5oT">
+                        <rect key="frame" x="61" y="20" width="89" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Border width:" id="DSn-DN-VjV">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GGB-nX-uVD">
+                        <rect key="frame" x="15" y="45" width="135" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Border transparency:" id="VTf-0S-w76">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iQS-WS-E2y">
+                        <rect key="frame" x="64" y="73" width="86" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Border color:" id="Nri-bu-KC8">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="Vs3-aT-OLF"/>
+        <imageCell controlSize="small" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="WmY-zZ-OY7"/>
+    </objects>
+</document>
