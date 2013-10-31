@@ -8,16 +8,16 @@ people who have accessibility requirements.
 
 Honer requires at least OS X 10.9 (Mavericks).
 
+## Download
+
+You can download the
+[latest release here](https://github.com/puffnfresh/Honer.app/releases/download/v1.0/Honer-6e3863f2.zip).
+
 ## Screenshots
 
 ![](honer-screenshot.gif)
 
 ![](honer-preferences.png)
-
-## Download
-
-You can download the
-[latest release here](https://github.com/puffnfresh/Honer.app/releases/download/v1.0/Honer-6e3863f2.zip).
 
 ## License
 
