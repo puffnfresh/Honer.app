@@ -42,19 +42,41 @@
 
 - (void)updateWindow
 {
-    AXUIElementRef window;
-    pid_t pid = [self getFrontPID];
-    [self detachNotifications];
-    [self getProcessWindow:pid window:&window];
-  
-    if(window == NULL) {
-        [self hideWindow];
-    } else {
-        [self copyWindow:window];
+    if(!suspended)
+    {
+        AXUIElementRef window;
+        pid_t pid = [self getFrontPID];
+        [self detachNotifications];
+        [self getProcessWindow:pid window:&window];
+        
+        if(window == NULL) {
+            [self hideWindow];
+        } else {
+            [self copyWindow:window];
+        }
+        
+        [self attachNotifications:pid];
     }
-
-    [self attachNotifications:pid];
+    else{
+        [self hideWindow];
+    }
 }
+
+
+- (IBAction)suspendProgram:(id)sender
+{
+    if(suspended){
+        suspended = false;
+        [sender setTitle:@"Suspend"];
+    }
+    else{
+        suspended = true;
+        [self hideWindow];
+        [sender setTitle:@"Resume"];
+        
+    }
+}
+
 
 - (pid_t)getFrontPID
 {

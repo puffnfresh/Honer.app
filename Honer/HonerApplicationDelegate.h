@@ -5,6 +5,7 @@
 {
     AXObserverRef axObserver;
     AXUIElementRef axApplication;
+    BOOL suspended;
 }
 
 @property IBOutlet OverlayWindow *window;
