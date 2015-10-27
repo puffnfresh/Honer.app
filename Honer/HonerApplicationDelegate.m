@@ -30,6 +30,8 @@
     self.statusBar.image = [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"icon-statusitem" ofType: @"pdf"]];
     self.statusBar.highlightMode = YES;
     self.statusBar.menu = self.statusBarMenu;
+    [self.statusBar.image setTemplate:YES];
+
     
     NSNotificationCenter *center =  [[NSWorkspace sharedWorkspace] notificationCenter];
     [center addObserver:self selector:@selector(onDeactivate:) name:NSWorkspaceDidDeactivateApplicationNotification object:nil];
