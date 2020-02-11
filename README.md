@@ -22,3 +22,13 @@ You can download the
 ## License
 
 MIT
+
+## Updates
+Since the project is abandoned, I made a **modern version**, you can download it from the links:
+https://macplus-software.com/downloads/NeuHoner.dmg
+https://macplus-software.com/downloads/NeuHoner.zip (zip files may not open in Google Chrome, I recommend using dmg)
+
+_App Notarized and Verified by Apple_
+
+Sergey
+https://noteifyapp.com
