@@ -110,11 +110,13 @@
 - (void)attachNotifications:(pid_t)pid
 {
     AXObserverCreate(pid, updateCallback, &axObserver);
-    AXObserverAddNotification(axObserver, axApplication, kAXWindowMiniaturizedNotification, (__bridge void *)(self));
-    AXObserverAddNotification(axObserver, axApplication, kAXWindowMovedNotification, (__bridge void *)(self));
-    AXObserverAddNotification(axObserver, axApplication, kAXWindowResizedNotification, (__bridge void *)(self));
-    AXObserverAddNotification(axObserver, axApplication, kAXFocusedWindowChangedNotification, (__bridge void *)(self));
-    CFRunLoopAddSource([[NSRunLoop currentRunLoop] getCFRunLoop], AXObserverGetRunLoopSource(axObserver), kCFRunLoopDefaultMode);
+    if (axObserver != nil) {
+        AXObserverAddNotification(axObserver, axApplication, kAXWindowMiniaturizedNotification, (__bridge void *)(self));
+        AXObserverAddNotification(axObserver, axApplication, kAXWindowMovedNotification, (__bridge void *)(self));
+        AXObserverAddNotification(axObserver, axApplication, kAXWindowResizedNotification, (__bridge void *)(self));
+        AXObserverAddNotification(axObserver, axApplication, kAXFocusedWindowChangedNotification, (__bridge void *)(self));
+        CFRunLoopAddSource([[NSRunLoop currentRunLoop] getCFRunLoop], AXObserverGetRunLoopSource(axObserver), kCFRunLoopDefaultMode);
+    }
 }
 
 - (void)hideWindow
@@ -136,8 +138,11 @@ void updateCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef 
     NSRect frame = [self.window frame];
     frame.origin = [self toOrigin:position size:size];
     frame.size = size;
-    [self.window setFrame:frame display:YES animate:NO];
     
+    CGFloat borderSize = [[NSUserDefaults standardUserDefaults] doubleForKey:@"size"];
+    frame = CGRectInset(frame, -borderSize, -borderSize);
+
+    [self.window setFrame:frame display:YES animate:NO];
     [self.window orderFront:nil];
 }
 
